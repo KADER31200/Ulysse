@@ -1,73 +1,125 @@
+/*  Import de la typo Source Sans Pro depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+
 :root {
-  --primary-color: #652d90;      /* violet Ulys */
-  --accent-color:  #ff8000;      /* orange Ulys */
-  --text-color:    #333;
-  --bg-color:      #fff;
-  --input-bg:      #f9f9f9;
-  --border-color:  #ddd;
+  --primary:   #652d90;   /* violet Ulys */
+  --accent:    #ff8000;   /* orange Ulys */
+  --bg-light:  #f4f4f7;
+  --bg-white:  #ffffff;
+  --text-dark: #1a1a1a;
+  --text-gray: #555555;
+  --radius:    8px;
+  --shadow:    0 4px 12px rgba(0,0,0,0.05);
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-  background: var(--bg-color);
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
+/* Navbar */
 header {
-  background: var(--primary-color);
-  padding: 1rem;
-  text-align: center;
+  background: var(--bg-white);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar img { height: 36px; }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-gray);
+  font-weight: 600;
+}
+.nav-links a:hover {
+  color: var(--primary);
 }
 
-header img {
-  height: 40px;
-}
-
+/* Container central */
 .container {
   max-width: 480px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
+/* Card pour le formulaire */
+.card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+/* Titres */
 h1 {
-  margin-bottom: 1rem;
-  color: var(--primary-color);
   text-align: center;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
 }
 
+/* Formulaire */
 form label {
   display: block;
-  margin: 0.5rem 0 0.25rem;
+  margin: 0.75rem 0 0.25rem;
+  font-weight: 600;
 }
-
 form input {
   width: 100%;
-  padding: 0.5rem;
-  background: var(--input-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  background: #fafafa;
+  font-size: 1rem;
+}
+form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(101,45,144,0.2);
 }
 
-button {
+/* Boutons */
+.btn {
   display: block;
   width: 100%;
+  margin-top: 1.75rem;
   padding: 0.75rem;
-  margin-top: 1.5rem;
-  background: var(--accent-color);
+  background: var(--accent);
   color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
   border: none;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: var(--radius);
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+.btn:hover {
+  background: #e57200;
 }
 
-button:hover {
-  opacity: 0.9;
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-gray);
 }
