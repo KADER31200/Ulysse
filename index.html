@@ -1,4 +1,13 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Abonnement Télépéage Ulys</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
 <body>
+
   <!-- HEADER HAUT -->
   <div class="top-nav">
     <a href="#"><span>👤</span> Mon espace</a>
@@ -10,7 +19,7 @@
   <header>
     <nav class="navbar">
 
-      <!-- Logo + Toggle -->
+      <!-- Logo + Toggle Particulier/Pro -->
       <div class="left-nav">
         <a href="index.html">
           <img src="assets/images/logo-ulys.png" alt="Ulys" class="logo"/>
@@ -21,7 +30,7 @@
         </div>
       </div>
 
-      <!-- Liens à droite -->
+      <!-- Liens de navigation -->
       <ul class="nav-links">
         <li><a href="#">Télépéage</a></li>
         <li><a href="#">Recharge électrique</a></li>
@@ -32,6 +41,55 @@
     </nav>
   </header>
 
-  <!-- ... votre formulaire ... -->
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="container">
+    <div class="card">
+      <h1>Votre abonnement télépéage</h1>
+      <form action="paiement.html" method="get">
+
+        <!-- Civilité -->
+        <label for="civilite">Civilité</label>
+        <div class="header-toggle">
+          <button type="button" class="toggle active">M.</button>
+          <button type="button" class="toggle">Mme</button>
+        </div>
+
+        <!-- Prénom -->
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Prénom" required/>
+
+        <!-- Nom -->
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom" placeholder="Nom" required/>
+
+        <!-- Date de naissance -->
+        <label for="dob">Date de naissance</label>
+        <input type="date" id="dob" name="dob" required/>
+
+        <!-- E-mail -->
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="adresse@mail.com" required/>
+
+        <!-- Confirmation e-mail -->
+        <label for="confirm-email">Confirmation e-mail</label>
+        <input type="email" id="confirm-email" name="confirm-email" placeholder="adresse@mail.com" required/>
+
+        <!-- Téléphone -->
+        <label for="tel">Téléphone</label>
+        <input type="tel" id="tel" name="tel" placeholder="+33 6 12 34 56 78" required/>
+
+        <!-- Bouton Continuer -->
+        <button type="submit" class="btn">Continuer</button>
+      </form>
+    </div>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Ulys. Tous droits réservés.
+  </footer>
 
 </body>
+</html>
