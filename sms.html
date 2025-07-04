@@ -4,21 +4,35 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Confirmation SMS – Ulys Télépéage</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
+
   <header>
-    <img src="assets/images/logo-ulys.png" alt="Ulys"/>
+    <nav class="navbar">
+      <img src="assets/images/logo-ulys.png" alt="Ulys"/>
+      <ul class="nav-links">
+        <li><a href="paiement.html">Retour</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <div class="container">
-    <h1>Entrez le code reçu par SMS</h1>
-    <form action="#" method="post">
-      <label for="sms-code">Code SMS</label>
-      <input type="text" id="sms-code" name="sms-code" maxlength="6" required />
+  <main class="container">
+    <div class="card">
+      <h1>Vérification par SMS</h1>
+      <p>Un code à 6 chiffres vient de vous être envoyé sur votre mobile.</p>
+      <form action="#" method="post">
+        <label for="sms-code">Code reçu</label>
+        <input type="text" id="sms-code" name="sms-code" maxlength="6" placeholder="123456" required/>
 
-      <button type="submit">Confirmer</button>
-    </form>
-  </div>
+        <button type="submit" class="btn">Confirmer</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Ulys. Sécurité renforcée.
+  </footer>
+
 </body>
 </html>
