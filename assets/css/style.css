@@ -6,8 +6,8 @@
 :root {
   --primary:      #652d90;
   --accent:       #ff8000;
-  --bg-light:     #FBEAD3;
-  --bg-white:     #ffffff;
+  --bg-light:     #FBEAD3;   /* beige chaud pour le contenu */
+  --bg-white:     #ffffff;  
   --text-dark:    #1a1a1a;
   --text-gray:    #555555;
   --border-light: #EAD1B8;
@@ -19,6 +19,7 @@
   box-sizing: border-box;
   margin: 0; padding: 0;
 }
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   background: var(--bg-light);
@@ -26,9 +27,9 @@ body {
   line-height: 1.6;
 }
 
-/* ── HEADER HAUT : Mon Espace / Devenir Client / Langue ────── */
+/* ── BINDEAU HAUT BLANC ────────────────────────────────────────── */
 .top-nav {
-  background: var(--bg-light);
+  background: var(--bg-white);       /* blanc */
   border-bottom: 1px solid var(--border-light);
   display: flex;
   justify-content: flex-end;
@@ -43,7 +44,6 @@ body {
   font-weight: 600;
 }
 .top-nav .btn-primary {
-  display: inline-block;
   padding: 0.5rem 1rem;
   background: linear-gradient(to right, #ff5b00, var(--accent));
   color: #fff;
@@ -51,9 +51,9 @@ body {
   font-weight: 600;
 }
 
-/* ── NAVBAR PRINCIPALE ───────────────────────────────────────── */
+/* ── NAVBAR PRINCIPALE BLANCHE ──────────────────────────────────── */
 .site-nav {
-  background: var(--bg-light);
+  background: var(--bg-white);       /* blanc */
   border-bottom: 1px solid var(--border-light);
   position: sticky; top: 0; z-index: 100;
 }
@@ -70,10 +70,20 @@ body {
   align-items: center;
   gap: 1.5rem;
 }
+/* Conteneur blanc autour du logo */
+.logo-container {
+  background: var(--bg-white);
+  padding: 4px 6px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+}
 .logo {
   width: 100px;
   height: auto;
+  display: block;
 }
+
+/* Toggle Particulier/Pro */
 .header-toggle {
   display: inline-flex;
   border: 1px solid #ccc;
@@ -97,6 +107,7 @@ body {
   background: #f0f0f0;
 }
 
+/* Liens de navigation à droite */
 .nav-links {
   list-style: none;
   display: flex;
@@ -113,7 +124,7 @@ body {
   color: var(--accent);
 }
 
-/* ── MAIN ─────────────────────────────────────────────────────── */
+/* ── CONTENU PRINCIPAL ──────────────────────────────────────────── */
 main.container {
   max-width: 600px;
   margin: 2.5rem auto;
@@ -146,12 +157,16 @@ form input {
   font-size: 1rem;
   color: var(--text-dark);
 }
-form input::placeholder { color: #aaa; }
+form input::placeholder {
+  color: #aaa;
+}
 form input:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(255,128,0,0.2);
 }
+
+/* Bouton Continuer */
 .btn {
   display: block;
   width: 100%;
@@ -167,10 +182,15 @@ form input:focus {
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
-.btn:hover { background: #e57200; transform: translateY(-1px); }
-.btn:active { transform: translateY(1px); }
+.btn:hover {
+  background: #e57200;
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(1px);
+}
 
-/* ── FOOTER ───────────────────────────────────────────────────── */
+/* ── FOOTER ─────────────────────────────────────────────────────── */
 footer {
   text-align: center;
   padding: 2rem 1rem;
@@ -178,9 +198,16 @@ footer {
   color: var(--text-gray);
 }
 
-/* ── RESPONSIVE ───────────────────────────────────────────────── */
+/* ── RESPONSIVE ────────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .top-nav, .navbar { padding: 0.5rem 1rem; }
-  .nav-links { gap: 1rem; }
-  h1 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+  .top-nav, .navbar {
+    padding: 0.5rem 1rem;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 }
