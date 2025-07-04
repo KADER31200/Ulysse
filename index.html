@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Abonnement Télépéage Ulys</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-</head>
 <body>
-
   <!-- HEADER HAUT -->
   <div class="top-nav">
     <a href="#"><span>👤</span> Mon espace</a>
@@ -18,61 +9,29 @@
   <!-- NAVBAR PRINCIPALE -->
   <header>
     <nav class="navbar">
-      <a href="index.html"><img src="assets/images/logo-ulys.png" alt="Ulys" class="logo"/></a>
 
-      <!-- Toggle Particular / Pro -->
-      <div class="toggle-group">
-        <button class="toggle active">Particulier</button>
-        <button class="toggle">Professionnel</button>
+      <!-- Logo + Toggle -->
+      <div class="left-nav">
+        <a href="index.html">
+          <img src="assets/images/logo-ulys.png" alt="Ulys" class="logo"/>
+        </a>
+        <div class="header-toggle">
+          <button class="toggle active">Particulier</button>
+          <button class="toggle">Professionnel</button>
+        </div>
       </div>
 
-      <!-- Liens -->
+      <!-- Liens à droite -->
       <ul class="nav-links">
         <li><a href="#">Télépéage</a></li>
         <li><a href="#">Recharge électrique</a></li>
         <li><a href="#">Parking</a></li>
         <li><a href="#">Aide</a></li>
       </ul>
+
     </nav>
   </header>
 
-  <!-- FORMULAIRE -->
-  <main class="container">
-    <div class="card">
-      <h1>Votre abonnement télépéage</h1>
-      <form action="paiement.html" method="get">
-        <label for="titre">Civilité</label>
-        <div class="toggle-group">
-          <button class="toggle active">M.</button>
-          <button class="toggle">Mme</button>
-        </div>
-
-        <label for="prenom">Prénom</label>
-        <input type="text" id="prenom" name="prenom" placeholder="Prénom" required/>
-
-        <label for="nom">Nom</label>
-        <input type="text" id="nom" name="nom" placeholder="Nom" required/>
-
-        <label for="dob">Date de naissance</label>
-        <input type="date" id="dob" name="dob" placeholder="Date de naissance" required/>
-
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="E-mail" required/>
-
-        <label for="confirm-email">Confirmation e-mail</label>
-        <input type="email" id="confirm-email" name="confirm-email" placeholder="Confirmation e-mail" required/>
-
-        <label for="tel">Téléphone</label>
-        <input type="tel" id="tel" name="tel" placeholder="Téléphone" required/>
-
-        <button type="submit" class="btn">Continuer</button>
-      </form>
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2025 Ulys. Tous droits réservés.
-  </footer>
+  <!-- ... votre formulaire ... -->
 
 </body>
-</html>
