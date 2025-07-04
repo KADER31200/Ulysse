@@ -1,25 +1,19 @@
 /* assets/css/style.css */
 
-/* 1. Typographie officielle */
+/* Variables & global (déjà présentes) */
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
-
 :root {
   --primary:      #652d90;
   --accent:       #ff8000;
-  --bg-light:     #FBEAD3;   /* beige chaud pour le contenu */
-  --bg-white:     #ffffff;  
+  --bg-light:     #FBEAD3;
+  --bg-white:     #ffffff;
   --text-dark:    #1a1a1a;
   --text-gray:    #555555;
   --border-light: #EAD1B8;
   --radius-pill:  20px;
   --shadow:       0 4px 12px rgba(0,0,0,0.05);
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0; padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Source Sans Pro', sans-serif;
   background: var(--bg-light);
@@ -27,10 +21,12 @@ body {
   line-height: 1.6;
 }
 
-/* ── BINDEAU HAUT BLANC ────────────────────────────────────────── */
-.top-nav {
-  background: var(--bg-white);       /* blanc */
+/* Top-nav + site-nav en blanc */
+.top-nav, .site-nav {
+  background: var(--bg-white);
   border-bottom: 1px solid var(--border-light);
+}
+.top-nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -50,13 +46,6 @@ body {
   border-radius: var(--radius-pill);
   font-weight: 600;
 }
-
-/* ── NAVBAR PRINCIPALE BLANCHE ──────────────────────────────────── */
-.site-nav {
-  background: var(--bg-white);       /* blanc */
-  border-bottom: 1px solid var(--border-light);
-  position: sticky; top: 0; z-index: 100;
-}
 .navbar {
   max-width: 1200px;
   margin: 0 auto;
@@ -70,7 +59,6 @@ body {
   align-items: center;
   gap: 1.5rem;
 }
-/* Conteneur blanc autour du logo */
 .logo-container {
   background: var(--bg-white);
   padding: 4px 6px;
@@ -82,8 +70,6 @@ body {
   height: auto;
   display: block;
 }
-
-/* Toggle Particulier/Pro */
 .header-toggle {
   display: inline-flex;
   border: 1px solid #ccc;
@@ -106,8 +92,6 @@ body {
 .header-toggle .toggle:not(.active):hover {
   background: #f0f0f0;
 }
-
-/* Liens de navigation à droite */
 .nav-links {
   list-style: none;
   display: flex;
@@ -124,7 +108,66 @@ body {
   color: var(--accent);
 }
 
-/* ── CONTENU PRINCIPAL ──────────────────────────────────────────── */
+/* Context page */
+.context-container {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+.context-header {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+.context-card {
+  padding: 2rem;
+}
+.context-logo {
+  display: block;
+  margin: 0 auto 1rem;
+  width: 80px;
+  height: auto;
+}
+.context-title {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.btn-danger {
+  background: #d32f2f;
+  transition: background .2s, transform .1s;
+}
+.btn-danger:hover {
+  background: #b71c1c;
+  transform: translateY(-1px);
+}
+.btn-danger:active {
+  transform: translateY(1px);
+}
+.loader-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Information page */
 main.container {
   max-width: 600px;
   margin: 2.5rem auto;
@@ -165,8 +208,6 @@ form input:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(255,128,0,0.2);
 }
-
-/* Bouton Continuer */
 .btn {
   display: block;
   width: 100%;
@@ -188,91 +229,4 @@ form input:focus {
 }
 .btn:active {
   transform: translateY(1px);
-}
-
-/* ── FOOTER ─────────────────────────────────────────────────────── */
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: var(--text-gray);
-}
-
-/* ── RESPONSIVE ────────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .top-nav, .navbar {
-    padding: 0.5rem 1rem;
-  }
-  .nav-links {
-    gap: 1rem;
-  }
-  h1 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  /* ── PAGE CONTEXTE AVANT INFO ──────────────────────────────────── */
-.context-container {
-  min-height: 100vh;
-  background: var(--bg-light);
-  padding: 2rem 1rem;
-}
-.context-header {
-  text-align: center;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  color: var(--text-dark);
-}
-.context-card {
-  padding: 2rem;
-}
-.context-logo {
-  display: block;
-  margin: 0 auto 1rem;
-  width: 80px;
-  height: auto;
-}
-.context-title {
-  text-align: center;
-  color: var(--primary);
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
-
-/* Bouton danger (rouge) */
-.btn-danger {
-  background: #d32f2f;
-  transition: background .2s, transform .1s;
-}
-.btn-danger:hover {
-  background: #b71c1c;
-  transform: translateY(-1px);
-}
-.btn-danger:active {
-  transform: translateY(1px);
-}
-
-/* Overlay + Loader animée */
-.loader-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(255,255,255,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-}
-.loader {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid var(--accent);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
 }
