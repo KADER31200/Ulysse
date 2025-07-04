@@ -11,7 +11,7 @@
   --text-dark:    #1a1a1a;
   --text-gray:    #555555;
   --border-light: #EAD1B8;
-  --radius:       28px;      /* inputs & toggles pill-shape */
+  --radius-pill:  20px;      /* pill-shape général */
   --shadow:       0 4px 12px rgba(0,0,0,0.05);
 }
 
@@ -27,7 +27,7 @@ body {
   line-height: 1.6;
 }
 
-/* ── HEADER HAUT (Mon espace / Devenir client / Lang) ───────────────── */
+/* ── HEADER HAUT ───────────────────────────────────────────────────── */
 .top-nav {
   max-width: 1200px;
   margin: 0 auto;
@@ -35,6 +35,7 @@ body {
   display: flex;
   justify-content: flex-end;
   gap: 1.5rem;
+  font-size: .95rem;
 }
 .top-nav a {
   text-decoration: none;
@@ -45,7 +46,8 @@ body {
   padding: .5rem 1rem;
   background: linear-gradient(to right, #ff5b00, var(--accent));
   color: #fff;
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
 }
 
 /* ── NAVBAR PRINCIPALE ─────────────────────────────────────────────── */
@@ -64,10 +66,42 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+/* Groupe logo + toggle */
+.left-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
 .logo {
-  width: 100px;
+  width: 80px;    /* ajusté pour ne pas écraser l’écran */
   height: auto;
 }
+
+/* Toggle Particulier/Pro */
+.header-toggle {
+  display: inline-flex;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.header-toggle .toggle {
+  padding: .4rem 1.2rem;
+  background: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  font-size: .9rem;
+}
+.header-toggle .toggle.active {
+  background: var(--accent);
+  color: #fff;
+}
+.header-toggle .toggle:not(.active):hover {
+  background: #f0f0f0;
+}
+
+/* Liens de nav à droite */
 .nav-links {
   list-style: none;
   display: flex;
@@ -78,35 +112,13 @@ header {
   color: var(--text-dark);
   font-weight: 600;
   transition: color .2s;
+  font-size: .95rem;
 }
 .nav-links a:hover {
   color: var(--accent);
 }
 
-/* ── TOGGLE PARTICULIER / PRO ───────────────────────────────────────── */
-.toggle-group {
-  display: inline-flex;
-  border: 1px solid #ccc;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.toggle-group .toggle {
-  padding: .5rem 1rem;
-  background: #fff;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background .2s, color .2s;
-}
-.toggle-group .toggle.active {
-  background: var(--accent);
-  color: #fff;
-}
-.toggle-group .toggle:not(.active):hover {
-  background: #f0f0f0;
-}
-
-/* ── MAIN ────────────────────────────────────────────────────────────── */
+/* ── MAIN ───────────────────────────────────────────────────────────── */
 main.container {
   max-width: 600px;
   margin: 2.5rem auto;
@@ -116,12 +128,12 @@ main.container {
 /* ── CARD FORMULAIRE ───────────────────────────────────────────────── */
 .card {
   background: var(--bg-white);
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   box-shadow: var(--shadow);
   padding: 2.5rem;
 }
 
-/* ── TITRE ──────────────────────────────────────────────────────────── */
+/* ── TITRE FORMULAIRE ───────────────────────────────────────────────── */
 h1 {
   text-align: center;
   color: var(--primary);
@@ -140,7 +152,7 @@ form input {
   width: 100%;
   padding: .75rem 1rem;
   border: 1px solid #ccc;
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   background: #fafafa;
   font-size: 1rem;
   color: var(--text-dark);
@@ -166,7 +178,7 @@ form input:focus {
   font-weight: 600;
   text-align: center;
   border: none;
-  border-radius: var(--radius);
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
