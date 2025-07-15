@@ -271,7 +271,6 @@ form input:focus {
   justify-content: center;
   z-index: 10000;
 }
-
 .spinner {
   width: 80px;
   height: 80px;
@@ -280,7 +279,6 @@ form input:focus {
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
-
 /* Animation de rotation */
 @keyframes spin {
   to { transform: rotate(360deg); }
