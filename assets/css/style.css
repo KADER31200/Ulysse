@@ -261,4 +261,34 @@ form input:focus {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
+  /* ── Spinner overlay ───────────────────────────────────────── */
+#spinnerOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 10px solid rgba(255, 255, 255, 0.2);
+  border-top: 10px solid #ff8000; /* orange accent Ulys */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animation de rotation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Centre le footer */
+footer {
+  text-align: center !important;
+}
+
 }
