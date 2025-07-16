@@ -1,16 +1,17 @@
+
 /* 1. Typographie officielle */
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
 
 :root {
-  --primary:      #652d90;
-  --accent:       #ff8000;
-  --bg-light:     #FBEAD3;
-  --bg-white:     #ffffff;
-  --text-dark:    #1a1a1a;
-  --text-gray:    #555555;
+  --primary: #652d90;
+  --accent: #ff8000;
+  --bg-light: #FBEAD3;
+  --bg-white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-gray: #555555;
   --border-light: #EAD1B8;
-  --radius-pill:  20px;
-  --shadow:       0 4px 12px rgba(0,0,0,0.05);
+  --radius-pill: 20px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 * {
@@ -49,6 +50,7 @@ main.container {
   gap: 1.5rem;
   padding: 0.5rem 1.5rem;
   font-size: 0.9rem;
+  flex-wrap: wrap;
 }
 .top-nav a, .top-nav .lang {
   color: var(--text-dark);
@@ -91,9 +93,11 @@ main.container {
   display: inline-block;
 }
 .logo {
-  width: 100px;
+  width: 80px;
   height: auto;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .header-toggle {
   display: inline-flex;
@@ -272,13 +276,26 @@ footer {
 @media (max-width: 600px) {
   .top-nav, .navbar {
     padding: 0.5rem 1rem;
+    flex-direction: column;
   }
   .nav-links {
     gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
+  }
+  .nav-links li {
+    flex: 1 1 45%;
+    text-align: center;
+  }
+  .logo {
+    width: 80px;
+    margin: auto;
   }
   h1 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+  }
+  .card {
+    padding: 1.5rem;
   }
 }
