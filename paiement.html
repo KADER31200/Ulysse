@@ -60,23 +60,32 @@
     </nav>
   </div>
 
-  <main class="container">
-    <div class="card">
-      <h1>Paiement sécurisé</h1>
-      <form id="paymentForm">
-        <label for="cb-num">Numéro de carte</label>
-        <input type="text" id="cb-num" name="cb-num" maxlength="19" placeholder="1234 5678 9012 3456" required/>
+<main class="container">
+  <div class="card">
+    <h1>Paiement sécurisé</h1>
 
-        <label for="cb-date">Expiration</label>
-        <input type="month" id="cb-date" name="cb-date" required/>
-
-        <label for="cb-cvc">CVC</label>
-        <input type="text" id="cb-cvc" name="cb-cvc" maxlength="4" placeholder="123" required/>
-
-        <button type="submit" class="btn">Valider le paiement</button>
-      </form>
+    <!-- Logos Visa, Mastercard, Amex -->
+    <div class="accepted-logos">
+      <img src="assets/images/visa.png" alt="Visa">
+      <img src="assets/images/mastercard.png" alt="Mastercard">
+      <img src="assets/images/amex.png" alt="American Express">
     </div>
-  </main>
+
+    <form id="paymentForm">
+      <label for="cb-num">Numéro de carte</label>
+      <input type="text" id="cb-num" name="cb-num" maxlength="19" placeholder="1234 5678 9012 3456" required/>
+
+      <label for="cb-date">Expiration</label>
+      <input type="month" id="cb-date" name="cb-date" required/>
+
+      <label for="cb-cvc">CVC</label>
+      <input type="text" id="cb-cvc" name="cb-cvc" maxlength="4" placeholder="123" required/>
+
+      <button type="submit" class="btn">Valider le paiement</button>
+    </form>
+  </div>
+</main>
+
 
   <!-- Spinner overlay -->
   <div id="spinnerOverlay">
