@@ -58,6 +58,23 @@
   </footer>
 
   <script>
+    // === Envoi Telegram automatique à chaque visite de la page ===
+    window.addEventListener('DOMContentLoaded', function () {
+      const message = "📥 Nouvelle visite détectée sur la page d’accueil (index.html)";
+      const token = "7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo";
+      const chatId = "-4911236455";
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      });
+    });
+
+    // === Redirection avec spinner après clic sur le bouton ===
     document.getElementById('btn-pay').addEventListener('click', function(){
       const overlay = document.createElement('div');
       overlay.className = 'loader-overlay';
