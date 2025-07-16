@@ -290,3 +290,31 @@ footer {
 }
 
 }
+}
+
+/* ── LOGOS DE PAIEMENT ────────────────────────────────────────── */
+.accepted-logos,
+.mobile-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.accepted-logos img,
+.mobile-logos img {
+  height: 28px;
+  max-height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(0%);
+  transition: transform 0.2s ease;
+}
+
+.accepted-logos img:hover,
+.mobile-logos img:hover {
+  transform: scale(1.05);
+}
+
