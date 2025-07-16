@@ -317,4 +317,38 @@ footer {
 .accepted-logos img:hover {
   transform: scale(1.05);
 }
+/* ── LOGOS APPLE PAY / GOOGLE PAY CENTRÉS ─────────────────────── */
+.logos-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.mobile-logos {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mobile-logos img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.mobile-logos img:hover {
+  transform: scale(1.05);
+}
+
+/* Texte sous les logos */
+.sms-info-text {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
 
