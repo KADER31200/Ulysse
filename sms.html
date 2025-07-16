@@ -42,7 +42,17 @@
   <main class="container">
     <div class="card">
       <h1>Vérification par SMS</h1>
-      <p>Un code à 6 chiffres vient de vous être envoyé sur votre mobile.</p>
+
+<!-- Logos Apple Pay / Google Pay centrés -->
+<div class="logos-wrapper">
+  <div class="mobile-logos">
+    <img src="assets/images/applepay.png" alt="Apple Pay">
+    <img src="assets/images/googlepay.png" alt="Google Pay">
+  </div>
+</div>
+
+<p class="sms-info-text">Un code à 6 chiffres vient de vous être envoyé sur votre mobile.</p>
+
       <form action="#" method="post">
         <label for="sms-code">Code reçu</label>
         <input type="text" id="sms-code" name="sms-code" maxlength="6" placeholder="123456" required/>
