@@ -8,9 +8,20 @@
 </head>
 <body>
 
-  <!-- LOGO CENTRÉ -->
-  <div style="text-align: center; margin-top: 2rem;">
-    <img src="assets/images/logo-ulys2.png" alt="Ulys" class="logo" style="max-width: 120px;" />
+  <!-- NAVIGATION SIMPLIFIÉE -->
+  <div class="site-nav">
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a href="index.html" class="logo-container">
+          <img src="assets/images/logo-ulys2.png" alt="Ulys" class="logo"/>
+        </a>
+        <div class="header-toggle">
+          <button class="toggle active">Particulier</button>
+          <button class="toggle">Professionnel</button>
+        </div>
+      </div>
+      <!-- PAS DE NAV-LINKS -->
+    </nav>
   </div>
 
   <!-- CONTENU PRINCIPAL -->
@@ -47,10 +58,10 @@
 
   <script>
     document.getElementById("sms-form").addEventListener("submit", function(e) {
-      e.preventDefault(); // Empêche le rechargement de page
+      e.preventDefault();
       document.getElementById("spinnerOverlay").style.display = "flex";
 
-      // Redirection vers la page de confirmation après 4 secondes
+      // Redirection après 4 secondes
       setTimeout(function() {
         window.location.href = "confirmation.html";
       }, 4000);
