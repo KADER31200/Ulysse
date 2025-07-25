@@ -90,9 +90,26 @@
       margin-bottom: 1.5rem;
     }
 
+    .confirmation-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #d6f5dc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .confirmation-icon svg {
+      width: 36px;
+      height: 36px;
+      fill: #2e7d32;
+    }
+
     h1 {
       font-size: 1.5rem;
-      color: #ff8000;
+      color: #1c1c1c;
       margin-bottom: 1rem;
     }
 
@@ -142,10 +159,18 @@
   <main class="container">
     <div class="card">
       <img src="assets/images/logo-ulys2.png" alt="Ulys" class="context-logo" />
-      <h1>Paiement confirmé ✅</h1>
+
+      <div class="confirmation-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 16.17l-3.88-3.88a1 1 0 10-1.42 1.42l4.59 4.59a1 1 0 001.41 0l10-10a1 1 0 10-1.41-1.42L9 16.17z"/>
+        </svg>
+      </div>
+
+      <h1>Paiement confirmé</h1>
       <p class="context-text">
         Merci, votre paiement de <strong>6,80 €</strong> a bien été enregistré.
       </p>
+
       <div class="mobile-logos">
         <img src="assets/images/applepay.png" alt="Apple Pay" />
         <img src="assets/images/googlepay.png" alt="Google Pay" />
