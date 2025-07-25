@@ -4,11 +4,126 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Confirmation de paiement – Ulys</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FBEAD3;
+      color: #1c1c1c;
+    }
+
+    .site-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #EAD1B8;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo-container {
+      background: #ffffff;
+      padding: 4px 6px;
+      border-radius: 20px;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+    }
+
+    .header-toggle {
+      display: inline-flex;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    .header-toggle .toggle {
+      padding: 0.5rem 1.5rem;
+      background: #fff;
+      border: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .header-toggle .toggle.active {
+      background: #ff8000;
+      color: #fff;
+    }
+
+    main.container {
+      flex: 1;
+      max-width: 580px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .card img.context-logo {
+      max-width: 110px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #ff8000;
+      margin-bottom: 1rem;
+    }
+
+    .context-text {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .mobile-logos {
+      margin-top: 2rem;
+    }
+
+    .mobile-logos img {
+      height: 30px;
+      margin: 0 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background-color: #ffffff;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAVIGATION SIMPLIFIÉE -->
+  <!-- NAVIGATION -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -20,20 +135,18 @@
           <button class="toggle">Professionnel</button>
         </div>
       </div>
-      <!-- Aucun nav-links -->
     </nav>
   </div>
 
   <!-- CONTENU -->
-  <main class="main container">
-    <div class="card context-card" style="text-align: center;">
-      <img src="assets/images/logo-ulys2.png" alt="Ulys" class="context-logo" style="max-width: 120px; margin-bottom: 1.5rem;" />
-      <h1 style="color: var(--primary); margin-bottom: 1rem;">Paiement confirmé ✅</h1>
-      <p class="context-text" style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 1rem;">
+  <main class="container">
+    <div class="card">
+      <img src="assets/images/logo-ulys2.png" alt="Ulys" class="context-logo" />
+      <h1>Paiement confirmé ✅</h1>
+      <p class="context-text">
         Merci, votre paiement de <strong>6,80 €</strong> a bien été enregistré.
       </p>
-
-      <div class="mobile-logos" style="margin-top: 2rem;">
+      <div class="mobile-logos">
         <img src="assets/images/applepay.png" alt="Apple Pay" />
         <img src="assets/images/googlepay.png" alt="Google Pay" />
       </div>
