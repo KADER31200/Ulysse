@@ -44,9 +44,24 @@
     }
 
     .form-logo-center img {
-      height: 60px; /* Agrandissement du logo ici */
+      height: 60px;
       width: auto;
       object-fit: contain;
+    }
+
+    /* Redonner la même largeur que sur la page index */
+    main.container {
+      flex: 1;
+      max-width: 700px; /* élargi comme demandé */
+      margin: 2.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 2.5rem;
     }
   </style>
 </head>
@@ -109,13 +124,11 @@
   </footer>
 
   <script>
-    // Activation bouton "Particulier" ou "Professionnel"
     function toggleUserType(button) {
       document.querySelectorAll(".header-toggle .toggle").forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
     }
 
-    // Civilité toggle
     const toggleButtons = document.querySelectorAll("#civilite-toggle .toggle");
     const civiliteInput = document.getElementById("civilite");
 
@@ -127,7 +140,6 @@
       });
     });
 
-    // Formulaire
     const form = document.getElementById("form-abonnement");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
