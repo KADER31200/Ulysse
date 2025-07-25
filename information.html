@@ -31,12 +31,22 @@
       }
     }
 
-    h1 {
-      color: #1a1a1a !important;
-    }
-
     .header-toggle button {
       cursor: pointer;
+    }
+
+    .form-logo-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-top: 0.5rem;
+    }
+
+    .form-logo-center img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
     }
   </style>
 </head>
@@ -60,9 +70,10 @@
   <!-- FORMULAIRE -->
   <main class="container">
     <div class="card">
-     <div class="form-logo-center">
-  <img src="assets/images/logo-ulys2.png" alt="Ulys" />
-</div>
+      <div class="form-logo-center">
+        <img src="assets/images/logo-ulys2.png" alt="Ulys" />
+      </div>
+
       <form id="form-abonnement">
         <label>Civilité</label>
         <div class="header-toggle" id="civilite-toggle">
