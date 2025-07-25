@@ -1,4 +1,3 @@
-
 /* 1. Typographie officielle */
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
 
@@ -154,6 +153,22 @@ h1 {
   margin-bottom: 2rem;
   line-height: 1.3;
 }
+
+.form-logo-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-top: 0.5rem;
+  height: 44px;
+}
+
+.form-logo-center img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
 form label {
   display: block;
   margin: 1rem 0 0.25rem;
@@ -297,5 +312,12 @@ footer {
   }
   .card {
     padding: 1.5rem;
+  }
+  .form-logo-center {
+    margin-bottom: 1.5rem;
+    height: auto;
+  }
+  .form-logo-center img {
+    height: 36px;
   }
 }
