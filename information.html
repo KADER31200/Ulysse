@@ -9,7 +9,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Segoe UI', 'Inter', sans-serif;
       background: #FBEAD3;
       color: #1c1c1c;
     }
@@ -98,9 +98,12 @@
 
     .intro-text {
       text-align: center;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      color: #333;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 2.2rem;
+      line-height: 1.6;
+      font-family: 'Segoe UI', 'Inter', sans-serif;
     }
 
     form label {
@@ -283,7 +286,6 @@
 📱 Téléphone : ${tel}
       `;
 
-      // Envoi vers ton bot Telegram
       fetch("https://api.telegram.org/bot8136145861:AAEkeva-K5BGkAlK8FMxDVknMN9Y1YQx26I/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
